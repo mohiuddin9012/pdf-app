@@ -1,9 +1,0 @@
-{
-  "name": "Bangla PDF Book Reader",
-  "description": "একটি আধুনিক এবং প্রিমিয়াম মানের বাংলা PDF বই পড়ার অ্যাপ। যেখানে ব্যবহারকারীরা নিরাপদে বই পড়তে পারবেন এবং অ্যাডমিনরা সহজেই বই আপলোড করতে পারবেন।",
-  "requestFramePermissions": [
-    "camera",
-    "microphone",
-    "geolocation"
-  ]
-}
