@@ -1,0 +1,97 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "App users and admins",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "user"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Book": {
+      "title": "Book",
+      "description": "PDF books metadata",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "author": { "type": "string" },
+        "description": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "coverImageUrl": { "type": "string" },
+        "pdfUrl": { "type": "string" },
+        "storageType": { "type": "string", "enum": ["cloudinary", "drive"] },
+        "isFeatured": { "type": "boolean" },
+        "totalReads": { "type": "integer" },
+        "totalPages": { "type": "integer" },
+        "estimatedReadingTime": { "type": "string" },
+        "averageRating": { "type": "number" },
+        "totalRatings": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "author", "pdfUrl", "storageType"]
+    },
+    "Rating": {
+      "title": "Rating",
+      "description": "User ratings for books",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "bookId": { "type": "string" },
+        "rating": { "type": "integer" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "bookId", "rating"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Book categories",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "icon": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "ReadingProgress": {
+      "title": "ReadingProgress",
+      "description": "User reading progress for books",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "bookId": { "type": "string" },
+        "lastPage": { "type": "integer" },
+        "progressPercent": { "type": "number" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "bookId"]
+    },
+    "Favorite": {
+      "title": "Favorite",
+      "description": "User favorite books",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "bookId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "bookId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": { "schema": "User", "description": "User profiles" },
+    "/books/{bookId}": { "schema": "Book", "description": "Book details" },
+    "/categories/{categoryId}": { "schema": "Category", "description": "Categories" },
+    "/reading_progress/{progressId}": { "schema": "ReadingProgress", "description": "User reading progress" },
+    "/favorites/{favoriteId}": { "schema": "Favorite", "description": "User favorites" },
+    "/ratings/{ratingId}": { "schema": "Rating", "description": "User ratings" }
+  }
+}
