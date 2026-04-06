@@ -1,0 +1,58 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --font-sans: "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans;
+  }
+}
+
+.glass {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-sm;
+}
+
+.premium-card {
+  @apply bg-white rounded-2xl shadow-sm border border-slate-100 transition-all duration-300 hover:shadow-md hover:-translate-y-1;
+}
+
+.btn-primary {
+  @apply bg-indigo-600 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:bg-indigo-700 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply bg-slate-100 text-slate-700 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:bg-slate-200 active:scale-95;
+}
+
+.input-field {
+  @apply w-full py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-300;
+  padding-left: 52px !important; /* At least 50px as requested */
+  padding-right: 16px;
+  line-height: 1.8;
+  font-family: "Hind Siliguri", sans-serif;
+}
+
+.input-field::placeholder {
+  @apply text-slate-400;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  opacity: 0.8;
+}
+
+.input-icon-container {
+  @apply absolute left-4 top-1/2 -translate-y-1/2 flex items-center justify-center text-slate-400 pointer-events-none transition-colors;
+  width: 24px;
+  height: 24px;
+  z-index: 10;
+}
+
+.input-icon-container.with-border {
+  @apply pr-3 border-r border-slate-200;
+  width: auto;
+  height: auto;
+}
+
